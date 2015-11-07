@@ -1,6 +1,2 @@
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-X                      Counter Actor                       X
-X Tokenizer Actor +--->Counter Actor+---> Aggregator Actor X
-X                      Counter Actor                       X
-X                                                          X
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# Word count Akka Actor model
+String -> Tokenizer/Splitter Actor -> 3 Worker Actors -> Aggregator Actor -> Print result
