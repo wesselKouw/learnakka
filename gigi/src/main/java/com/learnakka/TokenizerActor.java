@@ -15,7 +15,7 @@ public class TokenizerActor extends UntypedActor{
 		List<List<String>> partition = tokenizeAndSplitup(Strings.nullToEmpty((String)arg0));
 		
 		for(Integer i:Arrays.asList(0,1,2)){
-			getContext().system().actorSelection("akka://system/user/counting"+i).tell(partition.get(i),ActorRef.noSender());
+			getContext().system().actorSelection("akka://system/user/worker"+i).tell(partition.get(i),ActorRef.noSender());
 		}
 	}
 

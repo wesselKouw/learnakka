@@ -9,7 +9,7 @@ import java.util.Optional;
 import akka.actor.ActorRef;
 import akka.actor.UntypedActor;
 
-public class CountingActor extends UntypedActor{
+public class WorkerActor extends UntypedActor{
 
 	private Map<String,Integer> count = new HashMap<String,Integer>();
 	
