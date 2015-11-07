@@ -1,10 +1,7 @@
 package com.learnakka;
 
-
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
@@ -17,9 +14,9 @@ public class TokenizerActor extends UntypedActor{
 	public void onReceive(Object arg0) throws Exception {
 		List<List<String>> partition = tokenizeAndSplitup(Strings.nullToEmpty((String)arg0));
 		
-		getContext().system().actorSelection("akka://system/user/counting1").tell(partition.get(0),ActorRef.noSender());
-		getContext().system().actorSelection("akka://system/user/counting2").tell(partition.get(1),ActorRef.noSender());
-		getContext().system().actorSelection("akka://system/user/counting3").tell(partition.get(2),ActorRef.noSender());
+		for(Integer i:Arrays.asList(0,1,2)){
+			getContext().system().actorSelection("akka://system/user/counting"+i).tell(partition.get(i),ActorRef.noSender());
+		}
 	}
 
 	private List<List<String>> tokenizeAndSplitup(Object arg0) {

@@ -29,7 +29,7 @@ public class AggregatingActor extends UntypedActor{
 		
 	}
 	public void postStop(){
-		System.out.println(aggregated);
+		System.out.println("Final result:"+aggregated);
 	}
 	
 }

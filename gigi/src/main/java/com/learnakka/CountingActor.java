@@ -11,11 +11,7 @@ import akka.actor.UntypedActor;
 
 public class CountingActor extends UntypedActor{
 
-	private Map<String,Integer> count;
-	
-	public CountingActor(){
-		count = new HashMap<String,Integer>();
-	}
+	private Map<String,Integer> count = new HashMap<String,Integer>();
 	
 	@SuppressWarnings("unchecked")
 	@Override
