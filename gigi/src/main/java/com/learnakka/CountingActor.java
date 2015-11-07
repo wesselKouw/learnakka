@@ -1,8 +1,10 @@
 package com.learnakka;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import akka.actor.ActorRef;
 import akka.actor.UntypedActor;
@@ -18,14 +20,8 @@ public class CountingActor extends UntypedActor{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onReceive(Object arg0) throws Exception {
-		List<String> inputList;
-		if(arg0 instanceof List){
-			inputList = (List<String>) arg0;
-		}
-		else
-			return;
-		
-		for(String element:inputList){
+		List<String> input = (List<String>) Optional.of(arg0).orElse(Collections.emptyList());
+		for(String element:input){
 			if(count.containsKey(element)){
 				count.put(element,count.get(element)+1);
 			}

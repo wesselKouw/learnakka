@@ -4,6 +4,8 @@ package com.learnakka;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 import akka.actor.ActorRef;
@@ -13,7 +15,7 @@ public class TokenizerActor extends UntypedActor{
 
 	@Override
 	public void onReceive(Object arg0) throws Exception {
-		List<List<String>> partition = tokenizeAndSplitup(arg0);
+		List<List<String>> partition = tokenizeAndSplitup(Strings.nullToEmpty((String)arg0));
 		
 		getContext().system().actorSelection("akka://system/user/counting1").tell(partition.get(0),ActorRef.noSender());
 		getContext().system().actorSelection("akka://system/user/counting2").tell(partition.get(1),ActorRef.noSender());
